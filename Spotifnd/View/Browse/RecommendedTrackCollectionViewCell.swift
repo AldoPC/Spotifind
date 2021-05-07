@@ -60,7 +60,11 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
         
 
         albumCoverImageView.frame = CGRect(x: 5, y: 5, width: imageSize, height: imageSize)
-        trackNameLabel.frame = CGRect(x: contentView.width/2 - trackNameLabel.width/2, y: imageSize+30, width: trackNameLabelSize.width, height: trackNameLabelSize.height)
+        trackNameLabel.frame = CGRect(
+            x: contentView.width/2 - trackNameLabel.width/2,
+            y: imageSize+30,
+            width: min(trackNameLabelSize.width, contentView.width),
+            height: trackNameLabelSize.height)
         artistNameLabel.frame = CGRect(x: contentView.width/2 - artistNameLabel.width/2, y: imageSize+60, width: artistNameLabelSize.width, height: artistNameLabelSize.height)
     }
     

@@ -22,7 +22,7 @@ class RecommendedTrackListCollectionViewCell: UICollectionViewCell {
     
     private let artistNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.font = .systemFont(ofSize: 15, weight: .thin)
         label.shadowColor = UIColor.black
         label.shadowOffset = CGSize(width: 0, height: 1)
         label.numberOfLines = 0
@@ -54,9 +54,23 @@ class RecommendedTrackListCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        albumCoverImageView.frame = CGRect(x: 5, y: 2, width: contentView.height-4, height: contentView.height-4)
-        trackNameLabel.frame = CGRect(x: albumCoverImageView.right+10, y: 0, width: albumCoverImageView.right-15, height: contentView.height/2)
-        artistNameLabel.frame = CGRect(x: albumCoverImageView.right+10, y: 0, width: albumCoverImageView.right-15, height: contentView.height/2)
+        albumCoverImageView.frame = CGRect(
+            x: 5,
+            y: 2,
+            width: contentView.height-4,
+            height: contentView.height-4)
+        
+        trackNameLabel.frame = CGRect(
+            x: albumCoverImageView.right+10,
+            y: 0,
+            width: contentView.width-albumCoverImageView.right-15,
+            height: contentView.height/2)
+        
+        artistNameLabel.frame = CGRect(
+            x: albumCoverImageView.right+10,
+            y: trackNameLabel.bottom,
+            width: contentView.width-albumCoverImageView.right-15,
+            height: contentView.height/2)
         
         
     }

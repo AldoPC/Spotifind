@@ -13,14 +13,31 @@ class PlaylistViewController: UIViewController{
     
     private let collectionView = UICollectionView(
         frame: .zero,
-        collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: {_, _ -> NSCollectionLayoutSection? in
-            let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
+        collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { _, _ -> NSCollectionLayoutSection? in
+            let item = NSCollectionLayoutItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .fractionalHeight(1.0)
+                )
+            )
+            
             item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 2, bottom: 1, trailing: 2)
-            let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)), subitem: item, count: 1)
+            
+            let group = NSCollectionLayoutGroup.vertical(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .absolute(60)
+                ),
+                subitem: item,
+                count: 1
+            )
+            
             let section = NSCollectionLayoutSection(group: group)
             section.boundarySupplementaryItems = [
             NSCollectionLayoutBoundarySupplementaryItem(
-                layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1)),
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .fractionalWidth(1)),
                 elementKind: UICollectionView.elementKindSectionHeader,
                 alignment: .top)
             ]
@@ -43,19 +60,30 @@ class PlaylistViewController: UIViewController{
         title = playlist.name
         view.backgroundColor = UIColor(red: 0.5216, green: 0.949, blue: 0.502, alpha: 1.0)
         view.addSubview(collectionView)
+        
         collectionView.register(
             PlaylistHeaderCollectionReusableView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier)
-        collectionView.register(RecommendedTrackListCollectionViewCell.self, forCellWithReuseIdentifier: RecommendedTrackListCollectionViewCell.identifier)
+        
+        collectionView.register(
+            RecommendedTrackListCollectionViewCell.self,
+            forCellWithReuseIdentifier: RecommendedTrackListCollectionViewCell.identifier)
+        
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         APICaller.shared.getPlaylistDetails(for: playlist){ [weak self] result in
             DispatchQueue.main.sync {
                 switch result{
                 case .success(let model):
-                    self?.viewModels = model.tracks.items.compactMap({RecommendedTrackCellViewModel(name: $0.track.name, artistName: $0.track.artists.first?.name ?? "-", artworkURL: URL(string: $0.track.album?.images.first?.url ?? "-"))})
+                    self?.viewModels = model.tracks.items.compactMap({
+                        RecommendedTrackCellViewModel(
+                            name: $0.track.name,
+                            artistName: $0.track.artists.first?.name ?? "-",
+                            artworkURL: URL(string: $0.track.album?.images.first?.url ?? "-"))
+                    })
                     self?.collectionView.reloadData()
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -79,7 +107,7 @@ class PlaylistViewController: UIViewController{
     }
 }
 
-extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewDataSource, PlaylistHeaderCollectionReusableViewDelegate{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
@@ -88,7 +116,9 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedTrackListCollectionViewCell.identifier, for: indexPath) as? RecommendedTrackListCollectionViewCell else{
+        guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RecommendedTrackListCollectionViewCell.identifier,
+                for: indexPath) as? RecommendedTrackListCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.backgroundColor = .red
@@ -99,13 +129,14 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier,
-                for: indexPath
+            ofKind: kind,
+            withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier,
+            for: indexPath
         ) as? PlaylistHeaderCollectionReusableView,
-        kind == UICollectionView.elementKindSectionHeader else{
+        kind == UICollectionView.elementKindSectionHeader else {
             return UICollectionReusableView()
         }
+        
         let headerViewModel = PlaylistHeaderViewViewModel(
             name: playlist.name,
             ownerName: playlist.owner.display_name,
@@ -123,10 +154,9 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         //TODO
         print("idk")
     }
-}
-
-extension PlayerViewController: PlaylistHeaderCollectionReusableViewDelegate{
-    func PlaylistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
-        print("Playing All")
+    
+    func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
+        print("playing")
     }
 }
+
