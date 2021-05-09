@@ -16,6 +16,7 @@ class AlbumTrackCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .thin)
         label.shadowColor = UIColor.black
+        label.textColor = .lightText
         label.shadowOffset = CGSize(width: 0, height: 1)
         label.numberOfLines = 0
         return label
@@ -25,6 +26,7 @@ class AlbumTrackCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .regular)
         label.shadowColor = UIColor.black
+        label.textColor = .white
         label.shadowOffset = CGSize(width: 0, height: 1)
         label.numberOfLines = 0
         return label
@@ -32,8 +34,8 @@ class AlbumTrackCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect){
         super.init(frame: frame)
-        backgroundColor = .secondarySystemBackground
-        contentView.backgroundColor = .secondarySystemBackground
+        backgroundColor = .black
+        contentView.backgroundColor = .black
         contentView.addSubview(artistNameLabel)
         contentView.addSubview(trackNameLabel)
         contentView.clipsToBounds = true

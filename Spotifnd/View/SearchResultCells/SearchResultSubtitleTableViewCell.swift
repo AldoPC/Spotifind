@@ -14,13 +14,14 @@ class SearchResultSubtitleTableViewCell: UITableViewCell {
     
     private let label: UILabel = {
        let label = UILabel()
+        label.textColor = .white
         label.numberOfLines = 1
         return label
     }()
     
     private let subtitleLabel: UILabel = {
        let label = UILabel()
-        label.textColor = .secondaryLabel
+        label.textColor = .lightText
         label.numberOfLines = 1
         return label
     }()
@@ -36,6 +37,8 @@ class SearchResultSubtitleTableViewCell: UITableViewCell {
         contentView.addSubview(label)
         contentView.addSubview(subtitleLabel)
         contentView.addSubview(iconImageView)
+        backgroundColor = .black
+        contentView.backgroundColor = .black
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
     }
@@ -80,6 +83,6 @@ class SearchResultSubtitleTableViewCell: UITableViewCell {
     func configure(with viewModel: SearchResultSubtitleTableViewCellViewModel){
         label.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
-        iconImageView.sd_setImage(with: viewModel.imageURL, completed: nil)
+        iconImageView.sd_setImage(with: viewModel.imageURL, placeholderImage: UIImage(systemName: "photo"),completed: nil)
     }
 }

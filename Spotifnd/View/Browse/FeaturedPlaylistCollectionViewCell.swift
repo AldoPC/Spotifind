@@ -23,6 +23,7 @@ class FeaturedPlaylistCollectionViewCell: UICollectionViewCell {
        let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.textColor = .white
         label.textAlignment = .center
         return label
     }()
@@ -32,13 +33,14 @@ class FeaturedPlaylistCollectionViewCell: UICollectionViewCell {
        let label = UILabel()
         label.font = .systemFont(ofSize: 15, weight: .thin)
         label.numberOfLines = 0
+        label.textColor = .lightText
         label.textAlignment = .center
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .secondarySystemBackground
+        contentView.backgroundColor = .black
         contentView.addSubview(playlistCoverImageView)
         contentView.addSubview(playlistNameLabel)
         contentView.addSubview(creatorNameLabel)

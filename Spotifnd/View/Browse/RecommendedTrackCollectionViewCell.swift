@@ -22,6 +22,7 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.textColor = .white
         label.shadowColor = UIColor.black
         label.shadowOffset = CGSize(width: 0, height: 1)
         label.numberOfLines = 0
@@ -33,6 +34,7 @@ class RecommendedTrackCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.textColor = .white
         label.shadowColor = UIColor.black
         label.shadowOffset = CGSize(width: 0, height: 1)
         label.numberOfLines = 0

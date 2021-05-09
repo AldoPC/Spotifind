@@ -15,6 +15,7 @@ class SearchResultDefaultTableViewCell: UITableViewCell {
     
     private let label: UILabel = {
        let label = UILabel()
+        label.textColor = .white
         label.numberOfLines = 1
         return label
     }()
@@ -27,8 +28,10 @@ class SearchResultDefaultTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle,reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .black
         contentView.addSubview(label)
         contentView.addSubview(iconImageView)
+        contentView.backgroundColor = .black
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
     }

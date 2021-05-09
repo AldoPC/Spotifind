@@ -20,12 +20,13 @@ final class PlaylistHeaderCollectionReusableView: UICollectionReusableView {
     private let nameLabel: UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.textColor = .white
         return label
     }()
     
     private let descriptionLabel: UILabel = {
        let label = UILabel()
-        label.textColor = .secondaryLabel
+        label.textColor = .lightText
         label.font = .systemFont(ofSize: 18, weight: .regular)
         label.numberOfLines = 0
         return label
@@ -33,7 +34,7 @@ final class PlaylistHeaderCollectionReusableView: UICollectionReusableView {
     
     private let ownerLabel: UILabel = {
        let label = UILabel()
-        label.textColor = .secondaryLabel
+        label.textColor = .lightText
         label.font = .systemFont(ofSize: 18, weight: .light)
         return label
     }()
@@ -60,7 +61,7 @@ final class PlaylistHeaderCollectionReusableView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemBackground
+        backgroundColor = .black
         addSubview(imageView)
         addSubview(nameLabel)
         addSubview(descriptionLabel)
@@ -94,6 +95,6 @@ final class PlaylistHeaderCollectionReusableView: UICollectionReusableView {
         nameLabel.text = viewModel.name
         ownerLabel.text = viewModel.ownerName
         descriptionLabel.text = viewModel.description
-        imageView.sd_setImage(with: viewModel.artworkURL, completed: nil)
+        imageView.sd_setImage(with: viewModel.artworkURL, placeholderImage: UIImage(systemName: "photo"), completed: nil)
     }
 }

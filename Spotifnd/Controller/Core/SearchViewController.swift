@@ -16,7 +16,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
     
     let searchController: UISearchController = {
         let vc = UISearchController(searchResultsController: SearchResultViewController())
-        vc.searchBar.placeholder = "Canciones, Artistas, Albums"
+        vc.searchBar.placeholder = "Songs, Artists, Albums"
         vc.searchBar.searchBarStyle = .minimal
         vc.definesPresentationContext = true
         return vc
@@ -106,7 +106,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
                 bestPrediction = classification.identifier
             }
         }
-        let resultado = bestPrediction
+        let resultado = bestPrediction.replacingOccurrences(of: "_", with: " ")
         print(resultado)
         searchController.searchBar.text = resultado
     }
@@ -184,6 +184,7 @@ extension SearchViewController: SearchResultsViewControllerDelegate{
             vc.navigationItem.largeTitleDisplayMode = .never
             navigationController?.pushViewController(vc, animated: true)
         case .track(let model):
+            PlaybackPresenter.shared.startPlayback(from: self, track: model)
             break
         case .playlist(let model):
             let vc = PlaylistViewController(playlist: model)

@@ -21,12 +21,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureModels()
         title = "Settings"
         view.backgroundColor = UIColor(red: 0.5216, green: 0.949, blue: 0.502, alpha: 1.0)
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
+        
     }
     
     private func configureModels(){
@@ -73,6 +75,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.textLabel?.text = model.title
         cell.textLabel?.backgroundColor = UIColor(red: 0.5216, green: 0.949, blue: 0.502, alpha: 1.0)
         cell.textLabel?.textColor = .white
+        cell.backgroundColor = UIColor(red: 0.5216, green: 0.949, blue: 0.502, alpha: 1.0)
         return cell
     }
     

@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Find Your Groove"
+        
         view.backgroundColor = UIColor(red: 0.5216, green: 0.949, blue: 0.502, alpha: 1.0)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettings))
         
@@ -37,6 +38,7 @@ class HomeViewController: UIViewController {
         
         configureCollectionView()
         fetchData()
+        addLongTapGesture()
     }
     
     private var sections = [BrowseSectionType]()
@@ -45,6 +47,40 @@ class HomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
     }
+    
+    private func addLongTapGesture(){
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
+        collectionView.isUserInteractionEnabled = true
+        collectionView.addGestureRecognizer(gesture)
+    }
+    
+    @objc func didLongPress(_ gesture: UILongPressGestureRecognizer){
+        guard gesture.state == .began else{
+            return
+        }
+        let touchPoint = gesture.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: touchPoint), indexPath.section == 0 else{
+            return
+        }
+        let model = tracks[indexPath.row]
+        let actionSheet = UIAlertController(title: model.name, message: "Would you like to add this to a playlist?", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Add to Playlist", style: .default, handler: { _ in
+            
+            DispatchQueue.main.async {
+                let vc = LibraryPlaylistViewController()
+                vc.selectionHandler = { playlist in
+                    APICaller.shared.addTrackToPlaylist(track: model, playlist: playlist) { success in
+                        print("Added to playlist succes: \(success)")
+                    }
+                }
+                vc.title = "Select Playlist"
+                self.present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
+            }
+        }))
+        present(actionSheet, animated: true)
+    }
+    
     
     private func configureCollectionView(){
         view.addSubview(collectionView)
@@ -197,6 +233,16 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let section = sections[indexPath.section]
+        switch section {
+        case .recommendedTracks:
+            let track = tracks[indexPath.row]
+            PlaybackPresenter.shared.startPlayback(from: self, track: track)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

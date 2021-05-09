@@ -45,6 +45,7 @@ class AlbumViewController: UIViewController {
         }))
     
     private var viewModels = [RecommendedTrackCellViewModel]()
+    private var tracks = [AudioTrack]()
     
     init(album:Album){
         self.album = album
@@ -71,7 +72,7 @@ class AlbumViewController: UIViewController {
             AlbumTrackCollectionViewCell.self,
             forCellWithReuseIdentifier: AlbumTrackCollectionViewCell.identifier)
         
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .black
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -79,6 +80,7 @@ class AlbumViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result{
                 case .success(let model):
+                    self?.tracks = model.tracks.items
                     self?.viewModels = model.tracks.items.compactMap({
                         RecommendedTrackCellViewModel(
                             name: $0.name,
@@ -143,12 +145,18 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        //TODO
-        print("idk")
+        var track = tracks[indexPath.row]
+        track.album = self.album
+        PlaybackPresenter.shared.startPlayback(from: self, track: track)
     }
     
     func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
-        print("playing")
+        let tracksWithAlbum: [AudioTrack] = tracks.compactMap({
+            var track = $0
+            track.album = self.album
+            return track
+        })
+        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracksWithAlbum)
     }
 }
 

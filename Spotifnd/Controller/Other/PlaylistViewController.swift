@@ -54,6 +54,7 @@ class PlaylistViewController: UIViewController{
     }
     
     private var viewModels = [RecommendedTrackCellViewModel]()
+    private var tracks = [AudioTrack]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +71,7 @@ class PlaylistViewController: UIViewController{
             RecommendedTrackListCollectionViewCell.self,
             forCellWithReuseIdentifier: RecommendedTrackListCollectionViewCell.identifier)
         
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .black
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -78,6 +79,7 @@ class PlaylistViewController: UIViewController{
             DispatchQueue.main.sync {
                 switch result{
                 case .success(let model):
+                    self?.tracks = model.tracks.items.compactMap({$0.track})
                     self?.viewModels = model.tracks.items.compactMap({
                         RecommendedTrackCellViewModel(
                             name: $0.track.name,
@@ -152,11 +154,13 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         //TODO
-        print("idk")
+        let index = indexPath.row
+        let track = tracks[index]
+        PlaybackPresenter.shared.startPlayback(from: self, track: track)
     }
     
     func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
-        print("playing")
+        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracks)
     }
 }
 
