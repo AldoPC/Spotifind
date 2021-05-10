@@ -71,7 +71,11 @@ class HomeViewController: UIViewController {
                 let vc = LibraryPlaylistViewController()
                 vc.selectionHandler = { playlist in
                     APICaller.shared.addTrackToPlaylist(track: model, playlist: playlist) { success in
-                        print("Added to playlist succes: \(success)")
+                        if success{
+                        HapticsManager.shared.vibrate(for: .success)
+                        } else {
+                        HapticsManager.shared.vibrate(for: .error)
+                        }
                     }
                 }
                 vc.title = "Select Playlist"
@@ -133,7 +137,6 @@ class HomeViewController: UIViewController {
         var recommendations: RecommendationsResponse?
         
         let number = Int.random(in: 1...2)
-        print(number)
         switch number {
         case 1:
             APICaller.shared.getTopArtists{ result in
@@ -236,6 +239,7 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        HapticsManager.shared.vibrateForSelection()
         collectionView.deselectItem(at: indexPath, animated: true)
         let section = sections[indexPath.section]
         switch section {

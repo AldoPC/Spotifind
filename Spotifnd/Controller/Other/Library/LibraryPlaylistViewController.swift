@@ -19,7 +19,7 @@ class LibraryPlaylistViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(
             SearchResultSubtitleTableViewCell.self, forCellReuseIdentifier: SearchResultSubtitleTableViewCell.identifier)
-        tableView.isHidden = true
+        tableView.isHidden = false
         return tableView
     }()
 
@@ -51,6 +51,7 @@ class LibraryPlaylistViewController: UIViewController {
     
     private func setUpNoPlaylistsView(){
         view.addSubview(noPlayListsView)
+        noPlayListsView.isHidden = true
         noPlayListsView.delegate = self
         noPlayListsView.configure(with: ActionLabelViewViewModel(text: "You don't have any playlists yet.", actionTitle: "Create"))
     }
@@ -75,8 +76,8 @@ class LibraryPlaylistViewController: UIViewController {
             tableView.isHidden = true
         } else {
             tableView.reloadData()
-            tableView.isHidden = false
             noPlayListsView.isHidden = true
+            tableView.isHidden = false
         }
     }
     
@@ -95,8 +96,10 @@ class LibraryPlaylistViewController: UIViewController {
             }
             APICaller.shared.createPaylist(with: text) { success in
                 if success{
+                    HapticsManager.shared.vibrate(for: .success)
                     self.fetchData()
                 } else{
+                    HapticsManager.shared.vibrate(for: .error)
                     print("Failed to create playlists")
                 }
             }
@@ -127,6 +130,7 @@ extension LibraryPlaylistViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        HapticsManager.shared.vibrateForSelection()
         tableView.deselectRow(at: indexPath, animated: true)
         let playlist = playlists[indexPath.row]
         guard selectionHandler == nil else{
@@ -137,6 +141,7 @@ extension LibraryPlaylistViewController: UITableViewDelegate, UITableViewDataSou
 
         let vc = PlaylistViewController(playlist: playlist)
         vc.navigationItem.largeTitleDisplayMode = .never
+        vc.isOwner = true
         navigationController?.pushViewController(vc, animated: true)
     }
     

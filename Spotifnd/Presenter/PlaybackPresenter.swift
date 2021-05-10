@@ -13,6 +13,7 @@ protocol PlayerDataSoruce: AnyObject {
     var songName: String? { get }
     var subtitle: String? { get }
     var imageURL: URL? { get }
+    var trackToPass: AudioTrack? { get }
 }
 
 final class PlaybackPresenter{
@@ -59,7 +60,6 @@ final class PlaybackPresenter{
         vc.delegate = self
         viewController.present(UINavigationController(rootViewController: vc) ,animated: true) { [weak self]  in
             self?.player?.play()
-            print(track.preview_url!)
         }
         self.playerVC = vc
     }
@@ -154,5 +154,8 @@ extension PlaybackPresenter: PlayerDataSoruce{
         return URL(string: currentTrack?.album?.images.first?.url ?? "")
     }
     
+    var trackToPass: AudioTrack? {
+        return currentTrack
+    }
     
 }

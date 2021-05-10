@@ -28,6 +28,7 @@ class PlayerViewController: UIViewController {
     }()
     
     private let controlsView = PlayerControlsView()
+    private var track: AudioTrack?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,8 @@ class PlayerViewController: UIViewController {
     private func configureBarButtons(){
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapClose))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapAction))
+        navigationItem.rightBarButtonItem?.tintColor = .white
+        
     }
     
     private func configure(){
@@ -67,7 +70,26 @@ class PlayerViewController: UIViewController {
     }
     
     @objc private func didTapAction(){
-        //
+        let actionSheet = UIAlertController(title: dataSource?.songName, message: "Would you like to add this to a playlist?", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Add to Playlist", style: .default, handler: { _ in
+            
+            DispatchQueue.main.async {
+                let vc = LibraryPlaylistViewController()
+                vc.selectionHandler = { playlist in
+                    APICaller.shared.addTrackToPlaylist(track: self.dataSource?.trackToPass ?? self.track!, playlist: playlist) { success in
+                        if success{
+                        HapticsManager.shared.vibrate(for: .success)
+                        } else {
+                        HapticsManager.shared.vibrate(for: .error)
+                        }
+                    }
+                }
+                vc.title = "Select Playlist"
+                self.present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
+            }
+        }))
+        present(actionSheet, animated: true)
     }
     
     func refreshUI(){

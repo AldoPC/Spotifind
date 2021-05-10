@@ -42,15 +42,45 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 self?.signOutTaped()
             }
         })]))
+        sections.append(Section(title: "About us", options: [Option(title: "About us", handler: {[weak self] in
+            DispatchQueue.main.async{
+                self?.viewAboutUs()
+            }
+        })]))
     }
     
     private func signOutTaped(){
-        
+        let alert = UIAlertController(title: "Sign Out", message: "Are you sure?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
+            AuthManager.shared.signOut { [weak self] signedOut in
+                if signedOut{
+                    DispatchQueue.main.async {
+                        
+                        let navVC = UINavigationController(rootViewController: WelcomeViewController())
+                        navVC.navigationBar.prefersLargeTitles = true
+                        navVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
+                        navVC.modalPresentationStyle = .fullScreen
+                        self?.present(navVC, animated: true, completion: {
+                            self?.navigationController?.popToRootViewController(animated: false)
+                        })
+                    }
+                }
+            }
+        }))
+        present(alert, animated: true)
     }
     
     private func viewProfile(){
         let vc = ProfileViewController()
         vc.title = "Profile"
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func viewAboutUs(){
+        let vc = AboutUsViewController()
+        vc.title = "About Us"
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
