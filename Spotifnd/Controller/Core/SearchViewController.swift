@@ -22,7 +22,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         return vc
     }()
     
-
+    private let mlModel = ["Alfie", "Los Retros"]
     
     private let imageCamera = UIImageView()
     
@@ -138,6 +138,14 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
     }
     
     func updateSearchResults(for searchController: UISearchController) {
+        if mlModel.contains(searchController.searchBar.text!){
+            showMoreInfo(artist: searchController.searchBar.text!)
+        }
+    }
+    func showMoreInfo(artist: String){
+        let vc = showMoreInfoViewController(artist: artist)
+        present(UINavigationController(rootViewController: vc),animated: true,completion: nil)
+        
     }
 }
 
