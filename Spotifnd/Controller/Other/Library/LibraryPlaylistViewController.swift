@@ -20,6 +20,7 @@ class LibraryPlaylistViewController: UIViewController {
         tableView.register(
             SearchResultSubtitleTableViewCell.self, forCellReuseIdentifier: SearchResultSubtitleTableViewCell.identifier)
         tableView.isHidden = false
+        tableView.backgroundColor = .black
         return tableView
     }()
 

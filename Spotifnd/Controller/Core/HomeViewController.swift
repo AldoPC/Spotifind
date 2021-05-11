@@ -34,6 +34,8 @@ class HomeViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.5216, green: 0.949, blue: 0.502, alpha: 1.0)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettings))
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .done, target: self, action: #selector(didTapRefresh))
+        
         view.addSubview(spinner)
         
         configureCollectionView()
@@ -129,8 +131,6 @@ class HomeViewController: UIViewController {
     }
     
     private func fetchData(){
-
-        
         //Featured Playlist, Recommended Tracks, NewReleases
         let group = DispatchGroup()
         group.enter()
@@ -209,6 +209,8 @@ class HomeViewController: UIViewController {
     private func configureModel(tracks: [AudioTrack]){
         self.tracks = tracks
         
+        sections.removeAll()
+        
         sections.append(.recommendedTracks(viewModels: tracks.compactMap({
             return RecommendedTrackCellViewModel(name: $0.name, artistName: $0.artists.first?.name ?? "-", artworkURL: URL(string: $0.album?.images.first?.url ?? ""))
         })))
@@ -220,6 +222,10 @@ class HomeViewController: UIViewController {
         vc.title = "Settings"
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func didTapRefresh(){
+        fetchData()
     }
 
 

@@ -18,6 +18,7 @@ class LibraryAlbumsViewController: UIViewController {
         tableView.register(
             SearchResultSubtitleTableViewCell.self, forCellReuseIdentifier: SearchResultSubtitleTableViewCell.identifier)
         tableView.isHidden = true
+        tableView.backgroundColor = .black
         return tableView
     }()
     
@@ -29,7 +30,7 @@ class LibraryAlbumsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
-        setUpNoAlbumsView()
+        //setUpNoAlbumsView()
         fetchData()
         observer = NotificationCenter.default.addObserver(forName: .albumSavedNotification, object: nil, queue: .main, using: { [weak self] _ in
             self?.fetchData()
@@ -42,7 +43,7 @@ class LibraryAlbumsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        noAlbumsListsView.frame = CGRect(x: (view.width-150)/2, y: (view.height-150)/2, width: 150, height: 150)
+        //noAlbumsListsView.frame = CGRect(x: (view.width-150)/2, y: (view.height-150)/2, width: 150, height: 150)
         tableView.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
         
     }

@@ -15,6 +15,7 @@ class LibraryViewController: UIViewController {
     private let scrollView: UIScrollView = {
        let scrollView = UIScrollView()
         scrollView.isPagingEnabled = true
+        scrollView.backgroundColor = .systemPink
         return scrollView
     }()
     
@@ -58,12 +59,14 @@ class LibraryViewController: UIViewController {
     private func addChildren(){
         addChild(playlistsVC)
         scrollView.addSubview(playlistsVC.view)
-        playlistsVC.view.frame = CGRect(x: 0, y: 0, width: scrollView.width, height: scrollView.height)
+        playlistsVC.view.frame = CGRect(x: 0, y: -35, width: scrollView.width, height: scrollView.height)
+        playlistsVC.view.backgroundColor = .black
         playlistsVC.didMove(toParent: self)
         
         addChild(albumsVC)
         scrollView.addSubview(albumsVC.view)
-        albumsVC.view.frame = CGRect(x: view.width, y: 0, width: scrollView.width, height: scrollView.height)
+        albumsVC.view.frame = CGRect(x: view.width, y: -35, width: scrollView.width, height: scrollView.height)
+        albumsVC.view.backgroundColor = .black
         albumsVC.didMove(toParent: self)
     }
 }
