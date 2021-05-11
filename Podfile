@@ -8,6 +8,8 @@ target 'Spotifnd' do
   pod 'SDWebImage'
   pod 'Appirater'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
 
 
 end

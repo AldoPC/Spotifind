@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>749494334624-fef7ptn9n8oe6nr222v2ovhl42t6v27r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.749494334624-fef7ptn9n8oe6nr222v2ovhl42t6v27r</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDg_LgK19ISxH9zpc4nKKyiO98weem22-M</string>
+	<key>GCM_SENDER_ID</key>
+	<string>749494334624</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>mx.itesm.A01651119.Spotifind</string>
+	<key>PROJECT_ID</key>
+	<string>spotifind-74706</string>
+	<key>STORAGE_BUCKET</key>
+	<string>spotifind-74706.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:749494334624:ios:a29bc532300df736fe85c5</string>
+</dict>
+</plist>

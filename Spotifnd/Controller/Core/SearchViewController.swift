@@ -22,7 +22,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         return vc
     }()
     
-    private let mlModel = ["Alfie", "Los Retros"]
+    private let mlModel = ["Alfie", "ACDC", "Black Sabath", "Blue Oyster Cult", "Dio", "Slipknot"]
     
     private let imageCamera = UIImageView()
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AuthManager.shared.refreshIfNeeded{success in
             //print(success)
         }
+        
+        FirebaseApp.configure()
         
         return true
         
