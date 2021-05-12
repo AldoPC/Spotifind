@@ -75,6 +75,7 @@
 		6A7D577D2649047A00E651C1 /* showMoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D577C2649047A00E651C1 /* showMoreInfoViewController.swift */; };
 		6A7D57802649B38100E651C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D577F2649B38100E651C1 /* GoogleService-Info.plist */; };
 		6A89E6892634B55700E5878A /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A89E6882634B55700E5878A /* SettingsModels.swift */; };
+		6AE7D0AB264B9F7D0004CA1D /* MusicArtists1.mlkitmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE7D0AA264B9F7D0004CA1D /* MusicArtists1.mlkitmodel */; };
 		939976B55E2660F00C8BEB66 /* Pods_Spotifnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225264EA355F00DBF4D28D59 /* Pods_Spotifnd.framework */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +151,7 @@
 		6A7D577C2649047A00E651C1 /* showMoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showMoreInfoViewController.swift; sourceTree = "<group>"; };
 		6A7D577F2649B38100E651C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A89E6882634B55700E5878A /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
+		6AE7D0AA264B9F7D0004CA1D /* MusicArtists1.mlkitmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MusicArtists1.mlkitmodel; sourceTree = "<group>"; };
 		93752F51DE43074FA1E66C20 /* Pods-Spotifnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifnd.release.xcconfig"; path = "Target Support Files/Pods-Spotifnd/Pods-Spotifnd.release.xcconfig"; sourceTree = "<group>"; };
 		BBBCC85F300816414DAC77A3 /* Pods-Spotifnd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifnd.debug.xcconfig"; path = "Target Support Files/Pods-Spotifnd/Pods-Spotifnd.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,6 +301,7 @@
 		6A6C238C2630FDD2007BFA66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6AE7D0AA264B9F7D0004CA1D /* MusicArtists1.mlkitmodel */,
 				6A7D577F2649B38100E651C1 /* GoogleService-Info.plist */,
 				6A5B565B264501E900FF69A0 /* GoogLeNetPlaces.mlmodel */,
 				6A03C9192634E6A000A84DFB /* Assets.xcassets */,
@@ -511,6 +514,7 @@
 				6A6C23C92631385F007BFA66 /* AuthResponse.swift in Sources */,
 				6A6C23BD26310710007BFA66 /* AudioTrack.swift in Sources */,
 				6A5B56432641D54600FF69A0 /* FeaturedPlaylistCellViewModel.swift in Sources */,
+				6AE7D0AB264B9F7D0004CA1D /* MusicArtists1.mlkitmodel in Sources */,
 				6A6C239C26310102007BFA66 /* AuthViewController.swift in Sources */,
 				6A6C23732630FCDC007BFA66 /* AppDelegate.swift in Sources */,
 				6A03C94E263A059000A84DFB /* PlaylistDetailsResponse.swift in Sources */,

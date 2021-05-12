@@ -22,7 +22,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         return vc
     }()
     
-    private let mlModel = ["Alfie", "ACDC", "Black Sabath", "Blue Oyster Cult", "Dio", "Slipknot"]
+    private let mlModel = ["Blue Oyster Cult", "Cage The Elephant", "Dio", "Gorillaz", "Metronomy", "Modest Mouse", "Nirvana", "Phoenix", "Ratatat", "Robbie Williams", "Slipknot", "Ted Nugent", "The Beatles", "The Cinematics"]
     
     private let imageCamera = UIImageView()
     
@@ -89,9 +89,26 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
     
     @objc func didTapCamera(){
         let picker = UIImagePickerController()
-        picker.sourceType = .camera
         picker.delegate = self
-        present(picker, animated: true, completion: nil)
+        
+        let actionSheet = UIAlertController(title: "Search", message: "Would you like to take a picture or search the camera roll?", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Take picture", style: .default, handler: { _ in
+
+            DispatchQueue.main.async {
+                picker.sourceType = .camera
+                self.present(picker, animated: true, completion: nil)
+            }
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Search Camera roll", style: .default, handler: { _ in
+            
+            DispatchQueue.main.async {
+                picker.sourceType = .photoLibrary
+                self.present(picker, animated: true, completion: nil)
+            }
+        }))
+        present(actionSheet, animated: true)
+        
     }
     
     func resultadosModelo(request: VNRequest, error: Error?)
@@ -165,7 +182,7 @@ extension SearchViewController: UIImagePickerControllerDelegate{
         imagenCI = CIImage(image: image)
         
         //instanciar el modelo de la red neuronal
-        let modelFile = GoogLeNetPlaces()
+        let modelFile = MusicArtists1()
         let model = try! VNCoreMLModel(for: modelFile.model)
         //Crear un controlador para el manejo de la imagen, este es un requerimiento para ejecutar la solicitud del modelo
         let handler = VNImageRequestHandler(ciImage: imagenCI!)
