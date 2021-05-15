@@ -17,12 +17,87 @@ class WelcomeViewController: UIViewController {
         button.setTitleColor(UIColor(red: 0.2353, green: 0.7804, blue: 0.3804, alpha: 1.0), for: .normal)
         return button
     }()
+    
+    private let findYourGroove: UILabel = {
+       let label = UILabel()
+        label.font = .systemFont(ofSize: 27, weight: .bold)
+        label.textColor = UIColor(red: 0.2353, green: 0.7804, blue: 0.3804, alpha: 1.0)
+        label.backgroundColor = .white
+        label.numberOfLines = 0
+        label.layer.cornerRadius = 15.0
+        label.layer.masksToBounds = true
+        return label
+    }()
+    
+    private let explanation1: UILabel = {
+       let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.textColor = .white
+        label.shadowColor = UIColor.black
+        label.shadowOffset = CGSize(width: 0, height: 1)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let search: UILabel = {
+       let label = UILabel()
+        label.font = .systemFont(ofSize: 27, weight: .bold)
+        label.textColor = UIColor(red: 0.2353, green: 0.7804, blue: 0.3804, alpha: 1.0)
+        label.backgroundColor = .white
+        label.numberOfLines = 0
+        label.layer.cornerRadius = 15.0
+        label.layer.masksToBounds = true
+        return label
+    }()
+    
+    private let explanation2: UILabel = {
+       let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.textColor = .white
+        label.shadowColor = UIColor.black
+        label.shadowOffset = CGSize(width: 0, height: 1)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let Library: UILabel = {
+       let label = UILabel()
+        label.font = .systemFont(ofSize: 27, weight: .bold)
+        label.textColor = UIColor(red: 0.2353, green: 0.7804, blue: 0.3804, alpha: 1.0)
+        label.backgroundColor = .white
+        label.numberOfLines = 0
+        label.layer.cornerRadius = 15.0
+        label.layer.masksToBounds = true
+        return label
+    }()
+    
+    private let explanation3: UILabel = {
+       let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .regular)
+        label.textColor = .white
+        label.shadowColor = UIColor.black
+        label.shadowOffset = CGSize(width: 0, height: 1)
+        label.numberOfLines = 0
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Spotifind"
         view.backgroundColor = UIColor(red: 0.5216, green: 0.949, blue: 0.502, alpha: 1.0)
         view.addSubview(signInButton)
+        view.addSubview(findYourGroove)
+        view.addSubview(explanation1)
+        view.addSubview(search)
+        view.addSubview(explanation2)
+        view.addSubview(Library)
+        view.addSubview(explanation3)
+        findYourGroove.text = "Find Your Groove"
+        explanation1.text = "Find new music depending on your taste."
+        search.text = "Search"
+        explanation2.text = "Search for new tracks, albums and playlists."
+        Library.text = "Library"
+        explanation3.text = "Manage your playlists and Saved Albums."
         signInButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
         
     }
@@ -31,8 +106,44 @@ class WelcomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
         signInButton.frame = CGRect(
             x: 20,
-            y: view.height-50-view.safeAreaInsets.bottom,
+            y: view.height-90-view.safeAreaInsets.bottom,
             width: view.width-40,
+            height: 50
+        )
+        findYourGroove.frame = CGRect(
+            x: 10,
+            y: 150,
+            width: 217,
+            height: 50
+        )
+        explanation1.frame = CGRect(
+            x: 10,
+            y: findYourGroove.bottom-10,
+            width: view.width,
+            height: 50
+        )
+        search.frame = CGRect(
+            x: 10,
+            y: explanation1.bottom+20,
+            width: 91,
+            height: 50
+        )
+        explanation2.frame = CGRect(
+            x: 10,
+            y: search.bottom,
+            width: view.width,
+            height: 50
+        )
+        Library.frame = CGRect(
+            x: 10,
+            y: explanation2.bottom+20,
+            width: 91,
+            height: 50
+        )
+        explanation3.frame = CGRect(
+            x: 10,
+            y: Library.bottom-10,
+            width: view.width,
             height: 50
         )
     }

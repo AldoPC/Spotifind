@@ -71,7 +71,7 @@ class showMoreInfoViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        nameArtist.frame = CGRect(x: 0, y: 90, width: view.width, height: 50)
+        nameArtist.frame = CGRect(x: 0, y: 90, width: view.width, height: 50*2)
         map.frame = CGRect(x: (view.width)/2-(view.width)/2, y: ((view.height)/2-(view.width)/2)+nameArtist.bottom-60, width: view.width, height: view.width)
     }
     
