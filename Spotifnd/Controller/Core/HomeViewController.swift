@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 enum BrowseSectionType{
     case recommendedTracks(viewModels:[RecommendedTrackCellViewModel])
@@ -14,6 +15,7 @@ enum BrowseSectionType{
 class HomeViewController: UIViewController {
     
     private var tracks:[AudioTrack] = []
+    var session: WCSession?
     
     private var collectionView: UICollectionView = UICollectionView(
     frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
@@ -30,6 +32,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Find Your Groove"
+        session = WCSession.default
+        session?.delegate = self
+        session?.activate()
         
         view.backgroundColor = UIColor(red: 0.5216, green: 0.949, blue: 0.502, alpha: 1.0)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettings))
@@ -231,7 +236,19 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSource{
+extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSource, WCSessionDelegate{
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let type = sections[section]
         switch type {
@@ -251,6 +268,8 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         switch section {
         case .recommendedTracks:
             let track = tracks[indexPath.row]
+            let message = ["songName":track.name,"artistName":track.artists.first?.name]
+            session?.sendMessage(message, replyHandler: nil, errorHandler: nil)
             PlaybackPresenter.shared.startPlayback(from: self, track: track)
         }
     }

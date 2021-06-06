@@ -75,8 +75,59 @@
 		6A7D57802649B38100E651C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D577F2649B38100E651C1 /* GoogleService-Info.plist */; };
 		6A89E6892634B55700E5878A /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A89E6882634B55700E5878A /* SettingsModels.swift */; };
 		6AE7D0AB264B9F7D0004CA1D /* MusicArtists1.mlkitmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6AE7D0AA264B9F7D0004CA1D /* MusicArtists1.mlkitmodel */; };
+		6AF0C35B266CB8E200EB8945 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF0C359266CB8E200EB8945 /* Interface.storyboard */; };
+		6AF0C35D266CB8E500EB8945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF0C35C266CB8E500EB8945 /* Assets.xcassets */; };
+		6AF0C364266CB8E500EB8945 /* SpotifindWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6AF0C363266CB8E500EB8945 /* SpotifindWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6AF0C369266CB8E500EB8945 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF0C368266CB8E500EB8945 /* InterfaceController.swift */; };
+		6AF0C36B266CB8E500EB8945 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF0C36A266CB8E500EB8945 /* ExtensionDelegate.swift */; };
+		6AF0C36D266CB8E500EB8945 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF0C36C266CB8E500EB8945 /* NotificationController.swift */; };
+		6AF0C36F266CB8E500EB8945 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF0C36E266CB8E500EB8945 /* ComplicationController.swift */; };
+		6AF0C371266CB8E700EB8945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF0C370266CB8E700EB8945 /* Assets.xcassets */; };
+		6AF0C376266CB8E700EB8945 /* SpotifindWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6AF0C357266CB8E200EB8945 /* SpotifindWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		939976B55E2660F00C8BEB66 /* Pods_Spotifnd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225264EA355F00DBF4D28D59 /* Pods_Spotifnd.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6AF0C365266CB8E500EB8945 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A6C23672630FCDC007BFA66 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AF0C362266CB8E500EB8945;
+			remoteInfo = "SpotifindWatch Extension";
+		};
+		6AF0C374266CB8E700EB8945 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A6C23672630FCDC007BFA66 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6AF0C356266CB8E200EB8945;
+			remoteInfo = SpotifindWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6AF0C377266CB8E700EB8945 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6AF0C376266CB8E700EB8945 /* SpotifindWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AF0C37A266CB8E700EB8945 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6AF0C364266CB8E500EB8945 /* SpotifindWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		225264EA355F00DBF4D28D59 /* Pods_Spotifnd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotifnd.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +201,18 @@
 		6A7D577F2649B38100E651C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A89E6882634B55700E5878A /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 		6AE7D0AA264B9F7D0004CA1D /* MusicArtists1.mlkitmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MusicArtists1.mlkitmodel; sourceTree = "<group>"; };
+		6AF0C357266CB8E200EB8945 /* SpotifindWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifindWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF0C35A266CB8E200EB8945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		6AF0C35C266CB8E500EB8945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AF0C35E266CB8E500EB8945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AF0C363266CB8E500EB8945 /* SpotifindWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SpotifindWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF0C368266CB8E500EB8945 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6AF0C36A266CB8E500EB8945 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		6AF0C36C266CB8E500EB8945 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		6AF0C36E266CB8E500EB8945 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		6AF0C370266CB8E700EB8945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AF0C372266CB8E700EB8945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AF0C373266CB8E700EB8945 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		93752F51DE43074FA1E66C20 /* Pods-Spotifnd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifnd.release.xcconfig"; path = "Target Support Files/Pods-Spotifnd/Pods-Spotifnd.release.xcconfig"; sourceTree = "<group>"; };
 		BBBCC85F300816414DAC77A3 /* Pods-Spotifnd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotifnd.debug.xcconfig"; path = "Target Support Files/Pods-Spotifnd/Pods-Spotifnd.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +223,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				939976B55E2660F00C8BEB66 /* Pods_Spotifnd.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AF0C360266CB8E500EB8945 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +260,8 @@
 			isa = PBXGroup;
 			children = (
 				6A6C23712630FCDC007BFA66 /* Spotifnd */,
+				6AF0C358266CB8E200EB8945 /* SpotifindWatch */,
+				6AF0C367266CB8E500EB8945 /* SpotifindWatch Extension */,
 				6A6C23702630FCDC007BFA66 /* Products */,
 				8E203CE32BC8E7CC240AC7E3 /* Pods */,
 				FC070248090401A64BB69AE8 /* Frameworks */,
@@ -200,6 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				6A6C236F2630FCDC007BFA66 /* Spotifnd.app */,
+				6AF0C357266CB8E200EB8945 /* SpotifindWatch.app */,
+				6AF0C363266CB8E500EB8945 /* SpotifindWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -356,6 +430,30 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		6AF0C358266CB8E200EB8945 /* SpotifindWatch */ = {
+			isa = PBXGroup;
+			children = (
+				6AF0C359266CB8E200EB8945 /* Interface.storyboard */,
+				6AF0C35C266CB8E500EB8945 /* Assets.xcassets */,
+				6AF0C35E266CB8E500EB8945 /* Info.plist */,
+			);
+			path = SpotifindWatch;
+			sourceTree = "<group>";
+		};
+		6AF0C367266CB8E500EB8945 /* SpotifindWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6AF0C368266CB8E500EB8945 /* InterfaceController.swift */,
+				6AF0C36A266CB8E500EB8945 /* ExtensionDelegate.swift */,
+				6AF0C36C266CB8E500EB8945 /* NotificationController.swift */,
+				6AF0C36E266CB8E500EB8945 /* ComplicationController.swift */,
+				6AF0C370266CB8E700EB8945 /* Assets.xcassets */,
+				6AF0C372266CB8E700EB8945 /* Info.plist */,
+				6AF0C373266CB8E700EB8945 /* PushNotificationPayload.apns */,
+			);
+			path = "SpotifindWatch Extension";
+			sourceTree = "<group>";
+		};
 		8E203CE32BC8E7CC240AC7E3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,15 +483,51 @@
 				6A6C236C2630FCDC007BFA66 /* Frameworks */,
 				6A6C236D2630FCDC007BFA66 /* Resources */,
 				82E0115BCEEB792B3B2C3E6A /* [CP] Embed Pods Frameworks */,
+				6AF0C377266CB8E700EB8945 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6AF0C375266CB8E700EB8945 /* PBXTargetDependency */,
 			);
 			name = Spotifnd;
 			productName = Spotifnd;
 			productReference = 6A6C236F2630FCDC007BFA66 /* Spotifnd.app */;
 			productType = "com.apple.product-type.application";
+		};
+		6AF0C356266CB8E200EB8945 /* SpotifindWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AF0C37E266CB8E700EB8945 /* Build configuration list for PBXNativeTarget "SpotifindWatch" */;
+			buildPhases = (
+				6AF0C355266CB8E200EB8945 /* Resources */,
+				6AF0C37A266CB8E700EB8945 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6AF0C366266CB8E500EB8945 /* PBXTargetDependency */,
+			);
+			name = SpotifindWatch;
+			productName = SpotifindWatch;
+			productReference = 6AF0C357266CB8E200EB8945 /* SpotifindWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		6AF0C362266CB8E500EB8945 /* SpotifindWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AF0C37D266CB8E700EB8945 /* Build configuration list for PBXNativeTarget "SpotifindWatch Extension" */;
+			buildPhases = (
+				6AF0C35F266CB8E500EB8945 /* Sources */,
+				6AF0C360266CB8E500EB8945 /* Frameworks */,
+				6AF0C361266CB8E500EB8945 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SpotifindWatch Extension";
+			productName = "SpotifindWatch Extension";
+			productReference = 6AF0C363266CB8E500EB8945 /* SpotifindWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -405,6 +539,12 @@
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					6A6C236E2630FCDC007BFA66 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					6AF0C356266CB8E200EB8945 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					6AF0C362266CB8E500EB8945 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -423,6 +563,8 @@
 			projectRoot = "";
 			targets = (
 				6A6C236E2630FCDC007BFA66 /* Spotifnd */,
+				6AF0C356266CB8E200EB8945 /* SpotifindWatch */,
+				6AF0C362266CB8E500EB8945 /* SpotifindWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -435,6 +577,23 @@
 				6A03C91A2634E6A000A84DFB /* Assets.xcassets in Resources */,
 				6A6C237F2630FCE0007BFA66 /* LaunchScreen.storyboard in Resources */,
 				6A7D57802649B38100E651C1 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AF0C355266CB8E200EB8945 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF0C35D266CB8E500EB8945 /* Assets.xcassets in Resources */,
+				6AF0C35B266CB8E200EB8945 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AF0C361266CB8E500EB8945 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF0C371266CB8E700EB8945 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,7 +714,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6AF0C35F266CB8E500EB8945 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF0C36D266CB8E500EB8945 /* NotificationController.swift in Sources */,
+				6AF0C36F266CB8E500EB8945 /* ComplicationController.swift in Sources */,
+				6AF0C36B266CB8E500EB8945 /* ExtensionDelegate.swift in Sources */,
+				6AF0C369266CB8E500EB8945 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6AF0C366266CB8E500EB8945 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6AF0C362266CB8E500EB8945 /* SpotifindWatch Extension */;
+			targetProxy = 6AF0C365266CB8E500EB8945 /* PBXContainerItemProxy */;
+		};
+		6AF0C375266CB8E700EB8945 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6AF0C356266CB8E200EB8945 /* SpotifindWatch */;
+			targetProxy = 6AF0C374266CB8E700EB8945 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6A6C237D2630FCE0007BFA66 /* LaunchScreen.storyboard */ = {
@@ -564,6 +747,14 @@
 				6A6C237E2630FCE0007BFA66 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6AF0C359266CB8E200EB8945 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6AF0C35A266CB8E200EB8945 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -725,6 +916,90 @@
 			};
 			name = Release;
 		};
+		6AF0C378266CB8E700EB8945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y68QS49U9G;
+				IBSC_MODULE = SpotifindWatch_Extension;
+				INFOPLIST_FILE = SpotifindWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = mx.itesm.A01651119.Spotifind.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Debug;
+		};
+		6AF0C379266CB8E700EB8945 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y68QS49U9G;
+				IBSC_MODULE = SpotifindWatch_Extension;
+				INFOPLIST_FILE = SpotifindWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = mx.itesm.A01651119.Spotifind.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Release;
+		};
+		6AF0C37B266CB8E700EB8945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y68QS49U9G;
+				INFOPLIST_FILE = "SpotifindWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mx.itesm.A01651119.Spotifind.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Debug;
+		};
+		6AF0C37C266CB8E700EB8945 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y68QS49U9G;
+				INFOPLIST_FILE = "SpotifindWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mx.itesm.A01651119.Spotifind.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -742,6 +1017,24 @@
 			buildConfigurations = (
 				6A6C23842630FCE0007BFA66 /* Debug */,
 				6A6C23852630FCE0007BFA66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AF0C37D266CB8E700EB8945 /* Build configuration list for PBXNativeTarget "SpotifindWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AF0C37B266CB8E700EB8945 /* Debug */,
+				6AF0C37C266CB8E700EB8945 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AF0C37E266CB8E700EB8945 /* Build configuration list for PBXNativeTarget "SpotifindWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AF0C378266CB8E700EB8945 /* Debug */,
+				6AF0C379266CB8E700EB8945 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
